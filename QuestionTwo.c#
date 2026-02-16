@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+
+
+class Program
+{
+    static void Main()
+    {
+        List<int> shuffle = new List<int> { 5, 7, 10, 1, 2, 4, 9, 8, 3, 6 };
+
+        Console.WriteLine("Shuffle list: [");
+        for (int i = 0; i < shuffle.Count; i++)
+        {
+            Console.WriteLine(shuffle[i] + (i < shuffle.Count - 1 ? "," : ""));
+        }
+        Console.WriteLine("]");
+
+        int n = shuffle.Count;
+        for (int i = 0; i < n - 1; i++)
+        {
+            int minindex = i;
+            for (int j = i + 1; j < n; j++)
+            {
+                if (shuffle[j] < shuffle[minindex])
+                {
+                    minindex = j;
+                }
+            }
+
+            int temp = shuffle[minindex];
+            shuffle[minindex] = shuffle[i];
+            shuffle[i] = temp;
+        }
+
+        Console.Write("\nSorted List: [");
+        for (int i = 0; i < shuffle.Count; i++)
+        {
+            Console.Write(shuffle[i] + (i < shuffle.Count - 1 ? "," : ""));
+    }
+        Console.WriteLine("]");
+        }
+}
