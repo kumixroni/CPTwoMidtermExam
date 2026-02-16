@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+class Student
+{
+    public string Name { get; set; }
+    public int Score { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Student> students = new List<Student>()
+        {
+            new Student{Name = "Kurt", Score = 15},
+            new Student{Name = "Carl", Score = 23},
+            new Student{Name = "JK", Score = 22 },
+            new Student{Name = "James", Score = 30 },
+            new Student{Name = "Kelvin",Score = 9 },
+            new Student{ Name = "Haze", Score = 18 },
+            new Student{ Name = "Gaze", Score = 10 },
+            new Student{ Name = "Soap", Score = 20 },
+            new Student{ Name = "Price", Score = 28 },
+            new Student{ Name = "Mcqueen", Score = 26 },
+            new Student{ Name = "Bascreveil", Score = 25 },
+            new Student{ Name = "Luna", Score = 16 },
+            new Student{ Name = "Ian", Score = 21 },
+            new Student{ Name = "Joel", Score = 18 },
+        };
+
+        Console.WriteLine("Enter a score: ");
+
+        int targetScore = int.Parse(Console.ReadLine());
+
+        double totalScore = 0;
+        int matchCount = 0;
+
+        Console.WriteLine($"\nStudent with the same and lower score than {targetScore}");
+
+        foreach (var person in students)
+        {
+            if (person.Score <= targetScore)
+            {
+                Console.WriteLine($"Name: {person.Name} Score: {person.Score}");
+                totalScore += person.Score;
+                matchCount++;
+            }
+        }
+
+        if (matchCount > 0)
+        {
+            double average = totalScore / matchCount;
+            Console.WriteLine($"there average score: {average:0.00}");
+        }
+    }
+}
